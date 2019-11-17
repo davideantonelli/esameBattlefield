@@ -25,11 +25,14 @@ public class Battlefield {
 	}
 
 	public void addWalker(Walker w) {
-		// (vedi DOMANDA 1)
+
+	
+		
 	}
 
 	public void addChaser(Chaser c) {
 		// (vedi DOMANDA 1)
+		
 	}
 
 	public Walker getWalker(Position p) {

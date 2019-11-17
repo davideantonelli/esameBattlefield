@@ -1,35 +1,10 @@
 package battlefield;
 
-public class Chaser {
+public class Chaser implements Robot {
 
 	private Position posizione;
 	private int longevita;
-	
-	public Chaser(Position p) {
-		this.posizione = p;
-		this.longevita = 0 ;
-	}
-	
-	public Position getPosizione() {
-		return this.posizione;
-	}
-	
-	public int incrementaLongevita() {
-		return ++this.longevita;
-	}
-	
-	public int getLongevita() {
-		return this.longevita;
-	}
-	
-	public void passo(Battlefield field) {
-		Position nuova = this.decidiMossa(field);
-		if (nuova!=null) {
-			Chaser clone = new Chaser(nuova);
-			field.addChaser(clone);
-		}
-		this.incrementaLongevita();
-	}
+
 	
 	public Position decidiMossa(Battlefield field) {
 		Walker inseguito = cercaAvversario(field);
@@ -39,7 +14,7 @@ public class Chaser {
 	}
 
 	private Walker cercaAvversario(Battlefield field) {
-		for(Position p : field.adiacenti(this.getPosizione())) {
+		for(Position p : field.adiacenti(this.RobotgetPosizione())) {
 			Walker vicino = field.getWalker(p);
 			if (isAvversario(vicino)) {
 				return vicino;
@@ -50,6 +25,40 @@ public class Chaser {
 
 	private boolean isAvversario(Object avvistato) {
 		return true ; /* Ã¨ sicuramente un Walker??? per ora SI! */
+	}
+
+	@Override
+	public void robot(Position p) {
+		this.posizione = p;
+		this.longevita = 0 ;
+	}
+
+	@Override
+	public Position RobotgetPosizione() {
+		
+		return this.posizione;
+	}
+
+	@Override
+	public int RobotIncrementaLongevità() {
+		
+		return ++this.longevita;
+		
+	}
+
+	@Override
+	public int getLongevità() {
+		return this.longevita;
+	}
+
+	@Override
+	public int passo(Battlefield field) {
+		Position nuova = this.decidiMossa(field);
+		if (nuova!=null) {
+			Chaser clone = new Robot(nuova);
+			field.addChaser(clone);
+		}
+		this.RobotIncrementaLongevità();
 	}
 
 }
