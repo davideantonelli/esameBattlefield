@@ -1,26 +1,11 @@
 package battlefield;
 
-public class Chaser {
+public class Chaser extends Robot {
 
-	private Position posizione;
-	private int longevita;
-	
 	public Chaser(Position p) {
-		this.posizione = p;
-		this.longevita = 0 ;
+		super(p);// eredito la variabile p dalla superclasse Robot
 	}
 	
-	public Position getPosizione() {
-		return this.posizione;
-	}
-	
-	public int incrementaLongevita() {
-		return ++this.longevita;
-	}
-	
-	public int getLongevita() {
-		return this.longevita;
-	}
 	
 	public void passo(Battlefield field) {
 		Position nuova = this.decidiMossa(field);

@@ -14,43 +14,71 @@ public class Battlefield {
 
 	private Random random;
 	
-	private Map<Position, Walker> posizione2walker;
-	private Map<Position, Chaser> posizione2chaser;
+	private Map<Position, Robot> posizione2Robot;
+	
 
 	public Battlefield(int dimensione) {
 		this.dim = dimensione;
-		this.posizione2walker = new HashMap<>();
-		this.posizione2chaser = new HashMap<>();
+		this.posizione2Robot = new HashMap<>();
+		
 		this.random = new Random();
 	}
 
+	
+	public void addRobot(Robot r) { // costruttore utile per aggiungere il robot
+		if (inCampo(r.posizione)) {
+			posizione2Robot.put(r.posizione, r);
+			
+		}
+	}
+	
+	
+	
+	
+	
 	public void addWalker(Walker w) {
-		this.posizione2walker.put(w.getPosizione(), w);
+		addRobot(w);
 	}
 
 	public void addChaser(Chaser c) {
-		this.posizione2chaser.put(c.getPosizione(), c);
+		addRobot(c);
 	}
 
 	public Walker getWalker(Position p) {
-		return posizione2walker.get(p);
+		if (posizione2Robot.containsKey(p)) { // controllo che la posizione2Robot abbia le coordinate passate
+			if (posizione2Robot.get(p).getClass()==Walker.class) {// mi assicuro che posizione2Robot sia di tipo Walker
+				return (Walker) posizione2Robot.get(p);// Ritorno la posizione del Walker CASTTTTTTTTTT
+			}
+		}
+		return null;
 	}
 
 	public Chaser getChaser(Position p) {
-		return posizione2chaser.get(p);
+		if (posizione2Robot.containsKey(p)) { // controllo che la posizione2Robot abbia le coordinate passate
+			if (posizione2Robot.get(p).getClass()==Chaser.class) {// mi assicuro che posizione2Robot sia di tipo Chaser
+				return (Chaser) posizione2Robot.get(p);// Ritorno la posizione del Walker CASTTTTTTTTTT
+			}
+		}
+		return null;
 	}
 
 	public Collection<Walker> getAllWalkers() {
 		return this.posizione2walker.values();
 	}
-
+	
+	// Ottengo una collection di tutti i robot sil campo.
+	public Collection<Robot> getAllRobot() {
+		return this.posizione2Robot.values();
+	}
 	public Collection<Chaser> getAllChasers() {
 		return this.posizione2chaser.values();
 	}
 
 	@SuppressWarnings("rawtypes")
-	public Map<Class, Set<?>> raggruppaRobotPerTipo() {
-		// (vedi DOMANDA 3)
+	public Map<Class, Set<Robot>> raggruppaRobotPerTipo() {
+		//Trovo tutti i robot sulla mappa
+		Collection<Robot> allRobot = this.getAllRobot();
+				
 		return null;
 	}
 	

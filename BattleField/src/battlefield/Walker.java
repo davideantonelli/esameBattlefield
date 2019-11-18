@@ -1,28 +1,10 @@
 package battlefield;
 
 
-public class Walker {
-
-	private Position posizione;
-	private int longevita;
-	
+public class Walker extends Robot {
 	public Walker(Position p) {
-		this.posizione = p;
-		this.longevita = 0 ;
-	}
-
-	public Position getPosizione() {
-		return this.posizione;
-	}
-	
-	public int incrementaLongevita() {
-		return ++this.longevita;
-	}
-	
-	public int getLongevita() {
-		return this.longevita;
-	}
-	
+		super(p); // eredito la variabile p dalla superclasse Robot
+	}		
 	public void passo(Battlefield field) {
 		Position nuova = this.decidiDoveAndare(field);
 		if (nuova!=null) {
