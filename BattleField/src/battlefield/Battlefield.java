@@ -25,14 +25,11 @@ public class Battlefield {
 	}
 
 	public void addWalker(Walker w) {
-
-	
-		
+		this.posizione2walker.put(w.getPosizione(), w);
 	}
 
 	public void addChaser(Chaser c) {
-		// (vedi DOMANDA 1)
-		
+		this.posizione2chaser.put(c.getPosizione(), c);
 	}
 
 	public Walker getWalker(Position p) {
