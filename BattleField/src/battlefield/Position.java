@@ -9,12 +9,13 @@ import java.util.Set;
  */
 public class Position  {
 	private int x, y;
-	 private Set<Position> posizione;
+	 public Set<Position> posizione;//dichiaro un insieme di tipo Position
 	
 	public Position(int x, int y){
 		this.x = x;
 		this.y = y;
-		posizione = new HashSet<Position>();
+		posizione = new HashSet<Position>(); //inizializzo l'insieme posizione a nuovo Hashset
+		posizione.add(this);//aggiungo questa posizione all'HASHSET
 	}
 
 	public int getX() {
