@@ -1,33 +1,68 @@
 package battlefield;
+public class Position implements Comparable<Position>{
 
-import java.util.HashSet;
-import java.util.Set;
-
-/*
- * Da sistemare. Vedi PositionTest.
- * (vedi DOMANDA 1)
- */
-public class Position  {
 	private int x, y;
-	 public Set<Position> posizione;//dichiaro un insieme di tipo Position
-	
+
 	public Position(int x, int y){
-		this.x = x;
-		this.y = y;
-		posizione = new HashSet<Position>(); //inizializzo l'insieme posizione a nuovo Hashset
-		posizione.add(this);//aggiungo questa posizione all'HASHSET
+	this.x = x;
+	this.y = y;
 	}
 
 	public int getX() {
-		return this.x;
+	return this.x;
 	}
 
 	public int getY() {
-		return this.y;
-	}
-		
-	public String toString() {
-		return this.x+"-"+this.y;
+	return this.y;
 	}
 
-}
+	public String toString() {
+	return this.x+"-"+this.y;
+	}
+
+	
+		@Override
+		public int compareTo(Position p) {
+		if(this.x>p.getX()) {
+		return 1;
+		}
+		else if(this.x==p.getX()){
+		if(this.y>p.getY()) {
+		return 1;
+		}else if(this.y<p.getY()) {
+		return -1;
+		}
+		else return 0;
+		}else return -1;
+
+		}
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + x;
+		result = prime * result + y;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Position other = (Position) obj;
+		if (x != other.x)
+			return false;
+		if (y != other.y)
+			return false;
+		return true;
+	}
+	
+
+		
+	}
