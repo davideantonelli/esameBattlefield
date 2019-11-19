@@ -23,15 +23,15 @@ public class Main {
 		for(int i=0; i<PASSI; i++) {
 			
 			
-			final List<Chaser> allChasers = new ArrayList<>(this.field.getAllChasers());
+			final List<Robot> allChasers = new ArrayList<>(this.field.getAllChasers());
 			Collections.shuffle(allChasers);
-			for(Chaser c : allChasers) {
+			for(Robot c : allChasers) {
 				c.passo(field);
 			}
 			
-			final List<Walker> allWalkers = new ArrayList<>(this.field.getAllWalkers());
+			final List<Robot> allWalkers = new ArrayList<>(this.field.getAllWalkers());
 			Collections.shuffle(allWalkers);
-			for(Walker w : allWalkers) {
+			for(Robot w : allWalkers) {
 				w.passo(field);
 			}
 			
